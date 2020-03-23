@@ -1,0 +1,18 @@
+#basic {
+    position: absolute;
+    top: 40%;
+    right: 0;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%);
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
+}
+
+.form-wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
