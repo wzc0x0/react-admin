@@ -2,15 +2,15 @@ import React from "react";
 import { Form, Input, Button, Checkbox, message } from "antd";
 import "./Login.css";
 import { login } from "@/services";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
-export default function LoginRegister() {
+export default function Login() {
   const layout = {
     labelCol: { span: 8 },
-    wrapperCol: { span: 8 }
+    wrapperCol: { span: 8 },
   };
   const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 }
+    wrapperCol: { offset: 8, span: 16 },
   };
   const history = useHistory();
   const onFinish = (values: Record<string, string>) => {
@@ -18,13 +18,13 @@ export default function LoginRegister() {
       .then(() => {
         history.replace("/home");
       })
-      .catch(res => {
+      .catch((res) => {
         message.warning(res.msg);
         console.log(res);
       });
   };
-  const onFinishFailed = (errorInfo: object) => {
-    message.warn(errorInfo);
+  const onFinishFailed = (errorInfo: any) => {
+    message.warning(errorInfo);
   };
 
   return (
@@ -58,8 +58,11 @@ export default function LoginRegister() {
 
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
-            Submit
+            log in
           </Button>
+        </Form.Item>
+        <Form.Item {...tailLayout}>
+          <Link to="/register">register now!</Link>
         </Form.Item>
       </Form>
     </div>

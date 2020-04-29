@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Menu, Avatar, Dropdown } from "antd";
+import { Layout, Menu, Avatar, Dropdown, Button } from "antd";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -31,13 +31,9 @@ export default function HomePageLayout(props: Props) {
   const userMenu = (
     <Menu>
       <Menu.Item key="0">
-        <a
-          href="void(0)"
-          className="ant-dropdown-link"
-          onClick={e => handleLogout(e)}
-        >
+        <Button type="link" onClick={e => handleLogout(e)}>
           登出
-        </a>
+        </Button>
       </Menu.Item>
     </Menu>
   );
@@ -73,7 +69,9 @@ export default function HomePageLayout(props: Props) {
             <Menu.Item key="2">
               <Link to="/home/chart">Chart</Link>
             </Menu.Item>
-            <Menu.Item key="3">option5</Menu.Item>
+            <Menu.Item key="3">
+              <Link to="/home/movie">movie-top250</Link>
+            </Menu.Item>
           </SubMenu>
           <SubMenu
             key="sub2"
@@ -85,7 +83,10 @@ export default function HomePageLayout(props: Props) {
             }
           >
             <Menu.Item key="4">option5</Menu.Item>
-            <Menu.Item key="5">option5</Menu.Item>
+            <SubMenu key="sub3" title="Submenu">
+              <Menu.Item key="7">Option 7</Menu.Item>
+              <Menu.Item key="8">Option 8</Menu.Item>
+            </SubMenu>
             <Menu.Item key="6">option5</Menu.Item>
           </SubMenu>
           <SubMenu
@@ -116,13 +117,13 @@ export default function HomePageLayout(props: Props) {
           {/* 右边用户 */}
           <div className="user-avatar">
             <Dropdown overlay={userMenu} trigger={["click"]}>
-              <a href="void(0)" onClick={e => e.preventDefault()}>
+              <Button type="link" onClick={e => e.preventDefault()}>
                 <span className="user-name">{name}</span>
                 <Avatar
                   style={{ backgroundColor: "#87d068" }}
                   icon={<UserOutlined />}
                 />
-              </a>
+              </Button>
             </Dropdown>
           </div>
         </Header>

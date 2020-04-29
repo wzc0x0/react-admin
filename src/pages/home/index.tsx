@@ -15,6 +15,7 @@ export default function Home(props: RouteComponentProps) {
         path={`${match.url}/chart`}
         component={lazy(() => import("./Chart"))}
       />
+      <Route path={`${match.url}/movie`} component={lazy(() => import("./Movie"))}/>
     </HomeLayout>
   );
 }

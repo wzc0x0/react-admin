@@ -11,12 +11,16 @@ interface Result {
   data: any;
   msg: string;
 }
+interface Pagination {
+  current: number;
+  page_size: number;
+}
 // 拦截器实现
 http.interceptors.request.use(
-  conf => {
+  (conf) => {
     return conf;
   },
-  err => {
+  (err) => {
     return Promise.reject(err);
   }
 );
@@ -41,11 +45,15 @@ http.interceptors.response.use(
       }
     );
   },
-  err => Promise.reject(err)
+  (err) => Promise.reject(err)
 );
 
 export const login = (params: any): Promise<Result> =>
   http.post("/logon", params);
+export const register = (params: any): Promise<Result> =>
+  http.post("/register", params);
 export const getCounties = (): Promise<Result> => http.get("/get");
 export const getUserInfo = (): Promise<Result> => http.get("/auth/user");
 export const logout = (): Promise<Result> => http.get("/logout");
+export const getMovies = (params: Pagination): Promise<Result> =>
+  http.get("/getMovies", params);
