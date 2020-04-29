@@ -1,5 +1,6 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 export default function Index() {
-  return <div>首页</div>;
+  return <Redirect to="/login" />;
 }
