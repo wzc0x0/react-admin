@@ -5,7 +5,7 @@ import {
   MenuFoldOutlined,
   UserOutlined,
   VideoCameraOutlined,
-  UploadOutlined
+  UploadOutlined,
 } from "@ant-design/icons";
 import { getUserInfo, logout } from "@/services";
 import { Link, useHistory } from "react-router-dom";
@@ -31,7 +31,7 @@ export default function HomePageLayout(props: Props) {
   const userMenu = (
     <Menu>
       <Menu.Item key="0">
-        <Button type="link" onClick={e => handleLogout(e)}>
+        <Button type="link" onClick={(e) => handleLogout(e)}>
           登出
         </Button>
       </Menu.Item>
@@ -73,7 +73,7 @@ export default function HomePageLayout(props: Props) {
               <Link to="/home/movie">movie-top250</Link>
             </Menu.Item>
           </SubMenu>
-          <SubMenu
+          {/* <SubMenu
             key="sub2"
             title={
               <span>
@@ -101,7 +101,7 @@ export default function HomePageLayout(props: Props) {
             <Menu.Item key="7">2</Menu.Item>
             <Menu.Item key="8">3</Menu.Item>
             <Menu.Item key="9">4</Menu.Item>
-          </SubMenu>
+          </SubMenu> */}
         </Menu>
       </Sider>
       <Layout className="site-layout">
@@ -111,13 +111,13 @@ export default function HomePageLayout(props: Props) {
             collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
             {
               className: "trigger",
-              onClick: () => toggleCollapsed(collapsed ? false : true)
+              onClick: () => toggleCollapsed(collapsed ? false : true),
             }
           )}
           {/* 右边用户 */}
           <div className="user-avatar">
             <Dropdown overlay={userMenu} trigger={["click"]}>
-              <Button type="link" onClick={e => e.preventDefault()}>
+              <Button type="link" onClick={(e) => e.preventDefault()}>
                 <span className="user-name">{name}</span>
                 <Avatar
                   style={{ backgroundColor: "#87d068" }}
@@ -132,7 +132,7 @@ export default function HomePageLayout(props: Props) {
           style={{
             margin: "24px 16px",
             padding: 24,
-            minHeight: 280
+            minHeight: 280,
           }}
         >
           {props.children}
